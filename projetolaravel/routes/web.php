@@ -13,6 +13,16 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('/resetpassword/{token}/{email}', 'Auth\LoginController@passwordreset');
+
+Route::get('/login/azure', 'Auth\LoginController@redirectToProvider');
+Route::get('/login/callback', 'Auth\LoginController@handleProviderCallback');
+
+Route::get('/{any}', 'SpaController@index')->where('any', '.*');
+/*
 Route::get('/', function () {
     return view('welcome');
 });
+Auth::routes();
+Route::get('/home', 'HomeController@index')->name('home');
+*/
